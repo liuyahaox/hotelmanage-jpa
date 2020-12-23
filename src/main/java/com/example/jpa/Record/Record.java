@@ -1,5 +1,4 @@
-package com.example.jpa.Customer;
-
+package com.example.jpa.Record;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,26 +12,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @ToString
 
 @Entity
-@Table(name = "customer")
-
-public class Customer {
+@Table(name = "record")
+public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "sex")
-    private String sex;
-    @Column(name = "ident")
-    private String ident;
+    @Column(name = "recordid")
+    private Integer Recordid;
     @Column(name = "roomid")
-    private Integer roomid;
+    private Integer Roomid;
+    @Column(name = "custormerid")
+    private Integer Customerid;
+    @Column(name = "stime")
+    private String stime;
+    @Column(name = "etime")
+    private String etime;
+
     
 }

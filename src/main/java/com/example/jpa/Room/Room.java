@@ -30,6 +30,6 @@ public class Room {
     @Column(name = "price")
     private Integer price;
     @Column(name = "type")
-    private String type;
+    private String type;    
 
 }

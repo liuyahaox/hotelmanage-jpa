@@ -13,6 +13,10 @@ public class CustomerService {
     RecordService recordService = new RecordService();
     RoomService roomService = new RoomService();
 
+    public void regist(){
+        
+    }
+
     public boolean querryifbook(Integer id) {
         Room room = roomService.Findroombyid(id);
         if (room.isIsbooked()) {

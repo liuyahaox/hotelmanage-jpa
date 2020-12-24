@@ -11,7 +11,6 @@ public class RoomService {
     }
 
     public boolean bookroom(Integer id) {
-
         Room room = roomDao.findById(id).get();
         room.setIsbooked(true);
         roomDao.save(room);

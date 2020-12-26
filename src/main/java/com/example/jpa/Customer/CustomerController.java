@@ -27,7 +27,13 @@ public class CustomerController {
 
     @RequestMapping(value = "/")
     public ModelAndView test2(){
-        ModelAndView mv = new ModelAndView("form");
+        ModelAndView mv = new ModelAndView("forward:/page/test.html");
+        return mv;
+    }
+
+    @RequestMapping(value = "/findall")
+    public ModelAndView test4(){
+        ModelAndView mv = new ModelAndView("formcustomer");
         return mv;
     }
 

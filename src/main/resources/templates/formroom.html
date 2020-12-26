@@ -15,7 +15,7 @@
             table.render({
                 elem: '#demo'
                 , height: 600
-                , width: 1000
+                , width: 1050
                 , url: 'test3' //数据接口
                 , page: true //开启分页
                 , parseData: function (res) {
@@ -27,12 +27,12 @@
                     }
                 }
                 , cols: [[ //表头
-                    { field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left' }
-                    , { field: 'name', title: '用户名', width: 80 }
+                    { field: 'id', title: '房间号', width: 80, sort: true, fixed: 'left'  }
+                    , { field: 'isbooked', title: '是否被预定', width: 80 }
                     , { field: 'sex', title: '性别', width: 80 }
-                    , { field: 'ident', title: '身份证', width: 200 }
-                    , { field: 'roomid', title: '房间号', width: 80 }
-                    , { field: '', title: '操作', toolbar: '#barDemo' }
+                    , { field: 'price', title: '价格', width: 200 }
+                    , { field: 'type', title: '类型', width: 80 }
+                    , { field: '', title: '操作', toolbar: '#barDemo',fixed:'left' }
                 ]]
             });
 
@@ -68,38 +68,22 @@
     </script>
 </head>
 
-<body style="background-color: #9dbec5;">
+<body>
 
-    <ul class="layui-nav" lay-filter="">
-        <li class="layui-nav-item"><a href="">最新活动</a></li>
-        <li class="layui-nav-item layui-this"><a href="">产品</a></li>
-        <li class="layui-nav-item"><a href="">大数据</a></li>
-        <li class="layui-nav-item">
-            <a href="javascript:;">解决方案</a>
-            <dl class="layui-nav-child">
-                <!-- 二级菜单 -->
-                <dd><a href="">移动模块</a></dd>
-                <dd><a href="">后台模版</a></dd>
-                <dd><a href="">电商平台</a></dd>
-            </dl>
-        </li>
-        <li class="layui-nav-item"><a href="">社区</a></li>
-    </ul>
     <div class="layui-container">
         <div class="layui-row">
-            <div class="layui-col-md3" style="text-align: center;" >
-                <hr class="layui-bg-green">
+            <div class="layui-col-md1 " style="text-align: center;" >
+                <br>
+
+            </div>
+            <div class="layui-col-md11" style="text-align: center;">
                 <br>
                 
-            </div>
-            <div class="layui-col-md9" style="text-align: center;">
-                <hr class="layui-bg-green">
-                <br>
                 <table id="demo" lay-filter="test"></table>
             </div>
         </div>
-
-
+    
+       
 </body>
 
 </html>

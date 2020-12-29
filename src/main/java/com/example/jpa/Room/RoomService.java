@@ -1,7 +1,8 @@
 package com.example.jpa.Room;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+@Service
 public class RoomService {
     @Autowired
     RoomDao roomDao;
@@ -23,5 +24,7 @@ public class RoomService {
         room.setIsempty(false);
         roomDao.save(room);
     }
+
+    
 
 }

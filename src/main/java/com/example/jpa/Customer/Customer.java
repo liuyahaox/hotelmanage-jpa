@@ -1,6 +1,5 @@
 package com.example.jpa.Customer;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Data
 @ToString
-
 @Entity
 @Table(name = "customer")
 

@@ -1,4 +1,4 @@
-package com.example.jpa.config;
+package com.example.jpa.Config;
 
 import javax.servlet.Filter;
 import javax.servlet.Servlet;

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html >
 
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" th:href="@{layui/css/layui.css}" media="all">
-    <script th:src="@{layui/layui.js}"></script>
-    <script th:src="@{jquery-3.5.1.js}"></script>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.5.1.js}"></script>
     <script type="text/javascript" th:inline="none">
         layui.use('table', function () {
             var element = layui.element;
@@ -16,7 +16,7 @@
                 elem: '#demo'
                 , height: 600
                 , width: 1050
-                , url: 'test3' //数据接口
+                , url: 'getallcustomer' //数据接口
                 , page: true //开启分页
                 , parseData: function (res) {
                     console.log(res);

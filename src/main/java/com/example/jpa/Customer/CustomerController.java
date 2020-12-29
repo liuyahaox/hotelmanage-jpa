@@ -1,41 +1,37 @@
 package com.example.jpa.Customer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
 /**
  * 
- * PUT 更新
- * POST 添加
- * GET 查询
- * DELETE 删除
+ * PUT 更新 POST 添加 GET 查询 DELETE 删除
  */
+
 @RestController
+@RequestMapping( value = "/Customer")
 public class CustomerController {
-  
-    @Autowired
-    CustomerDao customerDao;
-     
-    @RequestMapping(value = "/test")
-    public Customer test(){
-     return customerDao.findById(1).get(); 
-   }
-   @RequestMapping(value = "/test3")
-   public Iterable<Customer> test3(){
-    return customerDao.findAll();
+  @Autowired
+  CustomerDao customerdao;
+
+  CustomerService customerService = new CustomerService();
+
+  @RequestMapping(value = "/lookcusinfo")
+  public ModelAndView getcustomer(){
+    ModelAndView mv = new ModelAndView("formcustomer");
+    return mv;
+}
+
+
+  @RequestMapping(value = "/getallcustomer")
+  public Iterable<Customer> findallcustomer() {
+    customerService.findallcustomer();
+     return customerdao.findAll();
   }
 
-    @RequestMapping(value = "/")
-    public ModelAndView test2(){
-        ModelAndView mv = new ModelAndView("forward:/page/test.html");
-        return mv;
-    }
+  
 
-    @RequestMapping(value = "/findall")
-    public ModelAndView test4(){
-        ModelAndView mv = new ModelAndView("formcustomer");
-        return mv;
-    }
 
-    
 }

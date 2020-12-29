@@ -3,18 +3,20 @@ package com.example.jpa.Customer;
 import com.example.jpa.Record.RecordService;
 import com.example.jpa.Room.Room;
 import com.example.jpa.Room.RoomService;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class CustomerService {
+
+@Service
+public class CustomerService { 
     @Autowired
     CustomerDao customerdao;
-
+    
     RecordService recordService = new RecordService();
     RoomService roomService = new RoomService();
 
-    public void regist(){
-        
+    public void regist() {
+
     }
 
     public boolean querryifbook(Integer id) {
@@ -43,8 +45,14 @@ public class CustomerService {
 
     }
 
+    public Iterable<Customer> findallcustomer() {
+           
+            return customerdao.findAll();
+    }
+
     public void checkout() {
 
     }
+
 
 }

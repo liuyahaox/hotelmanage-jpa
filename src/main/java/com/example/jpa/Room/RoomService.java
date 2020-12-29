@@ -7,8 +7,9 @@ public class RoomService {
     @Autowired
     RoomDao roomDao;
 
-    public Room Findroombyid(Integer id) {
-        return roomDao.findById(id).get();
+    public Room findroombyid(Integer id) {
+       // return roomDao.findById(id).get();
+       return roomDao.findById(id).get();
     }
 
     public boolean bookroom(Integer id) {
@@ -24,7 +25,13 @@ public class RoomService {
         room.setIsempty(false);
         roomDao.save(room);
     }
-
+    
+    public Iterable<Room> findallroom() {
+        return roomDao.findAll();
+     }
+     public Iterable<Room> findallroomnobook() {
+        return roomDao.findallroomnobook();
+     }
     
 
 }

@@ -5,7 +5,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class welcome {
     @RequestMapping(value = "/")
-    public ModelAndView welcome() {
+    public ModelAndView welcome1() {
       ModelAndView mv = new ModelAndView("forward:/page/test.html");
       return mv;
     }

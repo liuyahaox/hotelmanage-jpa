@@ -78,18 +78,36 @@ public class CustomerController {
   public void deleteCusbyid(Integer id) {
     customerService.customerdao.deleteById(id);
   }
+  @RequestMapping(value = "/deleteRoombyid")
+  public void deleteRoombyid(Integer id) {
+    roomservice.roomDao.deleteById(id);
+  }
 
   @RequestMapping(value = "/updatecustomer")
   public String updatecustomer(Customer customer) {
     customerService.customerdao.save(customer);
     return "SUCCESS";
+    
+  }
+  @RequestMapping(value = "/updateroom")
+  public String updateroom(Room room) {
+    roomservice.roomDao.save(room);
+    return "SUCCESS";
   }
 
-  @RequestMapping(value = "/edit")
-  public ModelAndView edit(Integer id) {
+  @RequestMapping(value = "/editcustomer")
+  public ModelAndView editcustomer(Integer id) {
     ModelAndView mv = new ModelAndView("formcuslook");
     Customer customer = customerService.customerdao.findById(id).get();
     mv.addObject("customer", customer);
+    return mv;
+  }
+
+  @RequestMapping(value = "/editroom")
+  public ModelAndView editroom(Integer id) {
+    ModelAndView mv = new ModelAndView("formroomlook");
+    Room room = roomservice.roomDao.findById(id).get();
+    mv.addObject("room", room);
     return mv;
   }
 

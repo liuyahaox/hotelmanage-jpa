@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.5.1.js}"></script>
+</head>
+<body>
+    <form class="layui-form" action="/Customer/updateroom">
+        <div class="layui-form-item">
+            <label class="layui-form-label">房间号</label>
+             <div class="layui-input-block">
+              <input type="text" name="id" required  lay-verify="required" placeholder="房间号" autocomplete="off" class="layui-input" th:value="${room.id}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">价格</label>
+            <div class="layui-input-block">
+              <input type="text" name="price" required  lay-verify="required" placeholder="价格" autocomplete="off" class="layui-input" th:value="${room.price}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">类型</label>
+            <div class="layui-input-block">
+              <input type="text" name="type" required  lay-verify="required" placeholder="类型" autocomplete="off" class="layui-input" th:value="${room.type}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">是否被预定</label>
+            <div class="layui-input-block">
+              <input type="radio" name="isbooked" value="true" title="是" th:checked="${room.isbooked==true}">
+              <input type="radio" name="isbooked" value="false" title="否" th:checked="${room.isbooked==false}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">是否为空</label>
+            <div class="layui-input-block">
+              <input type="radio" name="isempty" value="true" title="是" th:checked="${room.isempty==true}">
+              <input type="radio" name="isempty" value="false" title="否" th:checked="${room.isempty==false}">
+            </div>
+          </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
+       
+      <script>
+      //Demo
+      layui.use('form', function(){
+        var form = layui.form;
+        
+        //监听提交
+          form.on('submit(formDemo)', function(data){
+            return true; 
+        });
+      });
+      </script>
+</body>
+</html>

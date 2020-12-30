@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoomService {
     @Autowired
-    RoomDao roomDao;
+    public RoomDao roomDao;
 
     public Room findroombyid(Integer id) {
        // return roomDao.findById(id).get();
@@ -32,9 +32,11 @@ public class RoomService {
     public List<Room> findallroom() {
         return roomDao.findAll();
      }
+
      public List<Room> findallroomnobook(Pageable pageable) {
         return roomDao.findByisbooked(false,pageable);
      }
+
      public List<Room> findallroomnobook() {
         return roomDao.findByisbooked(false);
      }

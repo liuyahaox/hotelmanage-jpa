@@ -9,7 +9,8 @@
     <script th:src="@{/jquery-3.5.1.js}"></script>
 </head>
 <body>
-    <form class="layui-form" action="/Customer/updatecustomer">
+    <form class="layui-form" action="/Customer/updatecustomer" id="form">
+      <input name ="id" th:value="${customer.id}" hidden>
         <div class="layui-form-item">
           <label class="layui-form-label">姓名</label>
           <div class="layui-input-block">
@@ -51,10 +52,7 @@
         
         //监听提交
         form.on('submit(formDemo)', function(data){
-          layer.msg("提交成功",{time:10000},function(){
-            return true;
-          });
-          
+          return true;
         });
       });
       </script>

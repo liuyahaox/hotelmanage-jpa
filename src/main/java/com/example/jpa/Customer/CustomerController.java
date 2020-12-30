@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.jpa.Record.Record;
+import com.example.jpa.Record.RecordService;
 import com.example.jpa.Room.Room;
 import com.example.jpa.Room.RoomDao;
 import com.example.jpa.Room.RoomService;
@@ -31,6 +33,8 @@ public class CustomerController {
   CustomerService customerService;
   @Autowired
   RoomService roomservice;
+  @Autowired
+  RecordService recordservice;
 
   
   @RequestMapping(value = "/getallcustomer")
@@ -56,10 +60,29 @@ public class CustomerController {
     map.put("data",rooms);
     return map;
   }
+  @RequestMapping(value = "/getallrecord")
+  public Map<String, Object> getallrecord(int page, int limit) {
+    Pageable pageable = PageRequest.of(page-1, limit);
+    List<Record> records = recordservice.findallrecord(pageable);
+    Map<String, Object> map = new HashMap<>();
+    map.put("code", 0);
+    map.put("msg", "");
+    map.put("count",recordservice.findallrecord().size());
+    map.put("data",records);
+    return map;
+    
+  }
   
     @RequestMapping(value = "/getallroom")
-    public List<Room> findallroom() {
-      return roomservice.findallroom();
+    public Map<String, Object> findallroom(int page, int limit) {
+      Pageable pageable = PageRequest.of(page-1, limit);
+      List<Room> rooms = roomservice.findallroom(pageable);
+      Map<String, Object> map = new HashMap<>();
+      map.put("code",0);
+      map.put("msg", "");
+      map.put("count",roomservice.findallroom().size());
+      map.put("data",rooms);
+      return map;
     }
   
   @RequestMapping(value = "/lookcusinfo")
@@ -72,7 +95,11 @@ public class CustomerController {
     ModelAndView mv = new ModelAndView("room/formroom");
     return mv;
   }
-
+  @RequestMapping(value = "/lookrecordinfo")
+  public ModelAndView lookrecordinfo() {
+    ModelAndView mv = new ModelAndView("record/formrecord");
+    return mv;
+  }
 
   @RequestMapping(value = "/deleteCusbyid")
   public void deleteCusbyid(Integer id) {
@@ -81,6 +108,11 @@ public class CustomerController {
   @RequestMapping(value = "/deleteRoombyid")
   public void deleteRoombyid(Integer id) {
     roomservice.roomDao.deleteById(id);
+  }
+  @RequestMapping(value = "/deleteRecordbyid")
+  public void deleteRecordbyid(Integer id) {
+    System.out.println();
+    recordservice.recordDao.deleteById(id);
   }
 
   @RequestMapping(value = "/updatecustomer")
@@ -123,4 +155,6 @@ public class CustomerController {
     ModelAndView mv = new ModelAndView("room/formroomlook");
     return mv;
   }
+
+
 }

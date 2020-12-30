@@ -16,13 +16,14 @@
                 elem: '#demo'
                 , height: 500
                 , width: 1050
-                , url: 'getallroomnobook' //数据接口
+                // , url: 'getallroomnobook' //数据接口
+                , url: 'getallroom'
                 , page: true //开启分页
                 , cols: [[ //表头
                     { field: 'id', title: '房间号', width: 100, sort: true, fixed: 'left' }
-                    , { field: 'isbooked', title: '是否被预定', width: 100,align:'center' }
-                    , { field: 'isempty', title: '是否为空', width: 100,align:'center' }
-                    , { field: 'price', title: '价格', width: 80,align:'center' }
+                    , { field: 'isbooked', title: '是否被预定', sort: true,width: 120,align:'center' }
+                    , { field: 'isempty', title: '是否为空', sort: true,width: 120,align:'center' }
+                    , { field: 'price', title: '价格',sort: true, width: 80,align:'center' }
                     , { field: 'type', title: '类型', width: 150,align:'center' }
                     , { field: '', title: '操作', toolbar: '#barDemo',align:'center'}
                 ]]

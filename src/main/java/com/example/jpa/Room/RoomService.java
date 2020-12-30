@@ -11,7 +11,7 @@ public class RoomService {
     public RoomDao roomDao;
 
     public Room findroombyid(Integer id) {
-       // return roomDao.findById(id).get();
+       
        return roomDao.findById(id).get();
     }
 
@@ -29,9 +29,12 @@ public class RoomService {
         roomDao.save(room);
     }
     
-    public List<Room> findallroom() {
-        return roomDao.findAll();
+    public List<Room> findallroom(Pageable pageable) {
+        return roomDao.findAll(pageable);
      }
+     public List<Room> findallroom() {
+      return roomDao.findAll();
+   }
 
      public List<Room> findallroomnobook(Pageable pageable) {
         return roomDao.findByisbooked(false,pageable);

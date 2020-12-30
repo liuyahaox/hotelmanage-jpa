@@ -30,11 +30,11 @@ public class RecordService {
         return recordDao.findAll();
     }
 
-    public int getprice(Record record, int price) throws Exception {
+    public int getprice(Record record, Integer price) throws Exception {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date stime = df.parse(record.getStime());
         Date etime = df.parse(record.getEtime());
-        int day = (int) ((stime.getTime()-etime.getTime())/(24 * 60 * 60 * 1000));
+        int day = (int) ((etime.getTime()-stime.getTime())/(24 * 60 * 60 * 1000));
         return day*price;
         
     }

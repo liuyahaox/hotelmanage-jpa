@@ -1,7 +1,10 @@
 package com.example.jpa.Customer;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import com.example.jpa.Record.Record;
 import com.example.jpa.Record.RecordService;
 import com.example.jpa.Room.Room;
 import com.example.jpa.Room.RoomService;
@@ -38,18 +41,13 @@ public class CustomerService {
             return roomService.bookroom(id);
     }
 
-    public boolean checkin(Integer roomid, Integer customerid) {
-        if (querryifbook(roomid)) {
-            return false;
-        }
-        roomService.checkin(roomid, customerid);
-        recordService.saverecord(customerid, roomid);
-        customerdao.findById(customerid).get().setRoomid(roomid);
-        return true;
-
-    }
-    public void checkout() {
-
+    public int checkout(Integer recordid,Integer roomid) throws Exception {
+         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+         Record record = recordService.recordDao.findById(recordid).get();
+         Room room = roomService.findroombyid(roomid);
+         record.setEtime(df.format(new Date()));
+         recordService.recordDao.save(record);
+         return recordService.getprice(record,room.getPrice());
     }
 
     public List<Customer> findallcustomer(Pageable pageable) {
@@ -59,6 +57,8 @@ public class CustomerService {
     public List<Room> findallroomnobook(Pageable pageable) {
         return roomService.findallroomnobook(pageable);
      }
+
+     
  
 
 

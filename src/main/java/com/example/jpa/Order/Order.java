@@ -1,4 +1,4 @@
-package com.example.jpa.Record;
+package com.example.jpa.Order;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,25 +12,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
 @Entity
-@Table(name = "record")
-public class Record {
+@Table(name = "myorder")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name = "roomid")
-    private Integer roomid;
-    @Column(name = "custormerid")
-    private Integer customerid;
-    @Column(name = "stime")
-    private String stime;
-    @Column(name = "etime")
-    private String etime;
-
+    @Column(name = "recordid")
+    private Integer recordid;
+    @Column(name = "price")
+    private Integer price;
     
 }

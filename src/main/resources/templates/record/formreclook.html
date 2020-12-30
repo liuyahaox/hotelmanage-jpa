@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.5.1.js}"></script>
+</head>
+<body>
+    <form class="layui-form" action="/Customer/updaterecord" id="form">
+        <div class="layui-form-item">
+          <label class="layui-form-label">id</label>
+          <div class="layui-input-block">
+            <input type="text" name="id" required  lay-verify="required" placeholder="id" autocomplete="off" class="layui-input" th:value="${record?.id}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">房间号</label>
+          <div class="layui-input-block">
+            <input type="text" name="roomid" required  lay-verify="required" placeholder="身份证号" autocomplete="off" class="layui-input" th:value="${record?.roomid}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">顾客id</label>
+          <div class="layui-input-block">
+            <input type="text" name="customerid" required  lay-verify="required" placeholder="顾客id" autocomplete="off" class="layui-input" th:value="${record?.customerid}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">入住时间</label>
+            <div class="layui-input-block">
+              <input type="text" name="stime" required  lay-verify="required" placeholder="入住时间" autocomplete="off" class="layui-input" th:value="${record?.stime}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">退房时间</label>
+            <div class="layui-input-block">
+              <input type="text" name="etime"  placeholder="退房时间" autocomplete="off" class="layui-input" th:value="${record?.etime}">
+            </div>
+          </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
+       
+      <script>
+      //Demo
+      layui.use('form', function(){
+        var form = layui.form;
+        
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+          return true;
+        });
+      });
+      </script>
+</body>
+</html>

@@ -21,13 +21,6 @@ public class RoomService {
         roomDao.save(room);
         return true;
     }
-
-    public void checkin(Integer roomid, Integer customerid) {
-        Room room = roomDao.findById(roomid).get();
-        room.setIsbooked(true);
-        room.setIsempty(false);
-        roomDao.save(room);
-    }
     
     public List<Room> findallroom(Pageable pageable) {
         return roomDao.findAll(pageable);

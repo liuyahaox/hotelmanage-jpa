@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.jpa.Order.Order;
+import com.example.jpa.Order.OrderService;
 import com.example.jpa.Record.Record;
 import com.example.jpa.Record.RecordService;
 import com.example.jpa.Room.Room;
-import com.example.jpa.Room.RoomDao;
 import com.example.jpa.Room.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -26,8 +27,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/Customer")
 public class CustomerController {
   @Autowired
-  RoomDao roomDao;
-  @Autowired
   CustomerDao customerDao;
   @Autowired
   CustomerService customerService;
@@ -35,6 +34,8 @@ public class CustomerController {
   RoomService roomservice;
   @Autowired
   RecordService recordservice;
+  @Autowired
+  OrderService orderservice;
 
   
   @RequestMapping(value = "/getallcustomer")
@@ -84,6 +85,18 @@ public class CustomerController {
       map.put("data",rooms);
       return map;
     }
+      
+    @RequestMapping(value = "/getallorder")
+    public Map<String, Object> findallorder(int page, int limit) {
+      Pageable pageable = PageRequest.of(page-1, limit);
+      List<Order> orders = orderservice.orderdao.findAll(pageable);
+      Map<String, Object> map = new HashMap<>();
+      map.put("code",0);
+      map.put("msg", "");
+      map.put("count",orderservice.orderdao.findAll().size());
+      map.put("data",orders);
+      return map;
+    }
   
   @RequestMapping(value = "/lookcusinfo")
   public ModelAndView getcustomer() {
@@ -100,7 +113,11 @@ public class CustomerController {
     ModelAndView mv = new ModelAndView("record/formrecord");
     return mv;
   }
-
+  @RequestMapping(value = "/lookorderinfo")
+  public ModelAndView lookorderinfo() {
+    ModelAndView mv = new ModelAndView("order/formorder");
+    return mv;
+  }
   @RequestMapping(value = "/deleteCusbyid")
   public void deleteCusbyid(Integer id) {
     customerService.customerdao.deleteById(id);
@@ -126,7 +143,13 @@ public class CustomerController {
     roomservice.roomDao.save(room);
     return "SUCCESS";
   }
-
+  
+  @RequestMapping(value = "/updaterecord")
+  public String updaterecord(Record record) {
+    System.out.println(record.getId());
+    recordservice.recordDao.save(record);
+    return "SUCCESS";
+  }
   @RequestMapping(value = "/editcustomer")
   public ModelAndView editcustomer(Integer id) {
     ModelAndView mv = new ModelAndView("customer/formcuslook");
@@ -142,6 +165,14 @@ public class CustomerController {
     mv.addObject("room", room);
     return mv;
   }
+   @RequestMapping(value = "/editrecord")
+  public ModelAndView editrecord(Integer id) {
+    ModelAndView mv = new ModelAndView("record/formreclook");
+    Record record = recordservice.recordDao.findById(id).get();
+    System.out.println(record);
+    mv.addObject("record", record);
+    return mv;
+  }
   
   
   @RequestMapping(value = "/addcustomer")
@@ -155,6 +186,18 @@ public class CustomerController {
     ModelAndView mv = new ModelAndView("room/formroomlook");
     return mv;
   }
-
+  
+  @RequestMapping(value = "/checkin")
+  public void checkin(Integer customerid,Integer roomid) {
+    recordservice.saverecord(customerid, roomid);
+  }
+  @RequestMapping(value = "/checkout")
+  public int checkout(Integer recordid,Integer roomid) throws Exception {
+   int price = customerService.checkout(recordid, roomid);
+   orderservice.orderdao.save(new Order(null, recordid, price));
+  return price;
+  
+  }
+  
 
 }

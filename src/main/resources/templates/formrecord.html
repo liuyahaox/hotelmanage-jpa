@@ -14,18 +14,10 @@
             //第一个实例
             table.render({
                 elem: '#demo'
-                , height: 600
+                , height: 500
                 , width: 1050
                 , url: 'getallroom' //数据接口
                 , page: true //开启分页
-                , parseData: function (res) {
-                    console.log(res);
-                    return {
-                        "code": 0,
-                        "msg": "",
-                        "data": res
-                    }
-                }
                 , cols: [[ //表头
                     { field: 'id', title: '房间号', width: 100, sort: true, fixed: 'left' }
                     , { field: 'isbooked', title: '是否被预定', width: 100,align:'center' }
@@ -47,6 +39,7 @@
                     layer.confirm('真的删除行么', function (index) {
                         obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                         layer.close(index);
+                      
                         //向服务端发送删除指令
                     });
                 } else if (layEvent === 'edit') { //编辑

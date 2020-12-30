@@ -1,6 +1,9 @@
 package com.example.jpa.Room;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 @Service
 public class RoomService {
@@ -26,11 +29,14 @@ public class RoomService {
         roomDao.save(room);
     }
     
-    public Iterable<Room> findallroom() {
+    public List<Room> findallroom() {
         return roomDao.findAll();
      }
-     public Iterable<Room> findallroomnobook() {
-        return roomDao.findallroomnobook();
+     public List<Room> findallroomnobook(Pageable pageable) {
+        return roomDao.findByisbooked(false,pageable);
+     }
+     public List<Room> findallroomnobook() {
+        return roomDao.findByisbooked(false);
      }
     
 

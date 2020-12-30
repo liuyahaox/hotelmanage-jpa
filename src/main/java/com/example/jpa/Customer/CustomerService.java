@@ -1,10 +1,14 @@
 package com.example.jpa.Customer;
 
+import java.util.List;
+
 import com.example.jpa.Record.RecordService;
 import com.example.jpa.Room.Room;
 import com.example.jpa.Room.RoomService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -49,12 +53,12 @@ public class CustomerService {
 
     }
 
-    public Iterable<Customer> findallcustomer() {
-       return customerdao.findAll();
+    public List<Customer> findallcustomer(Pageable pageable) {
+       return customerdao.findAll(pageable);
     }
 
-    public Iterable<Room> findallroomnobook() {
-        return roomService.findallroomnobook();
+    public List<Room> findallroomnobook(Pageable pageable) {
+        return roomService.findallroomnobook(pageable);
      }
  
 

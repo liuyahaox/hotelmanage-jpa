@@ -14,24 +14,16 @@
             //第一个实例
             table.render({
                 elem: '#demo'
-                , height: 600
+                , height: 500
                 , width: 1050
-                , url: 'getallcustomer' //数据接口
                 , page: true //开启分页
-                , parseData: function (res) {
-                    console.log(res);
-                    return {
-                        "code": 0,
-                        "msg": "",
-                        "data": res
-                    }
-                }
+                , url: 'getallcustomer' //数据接口
                 , cols: [[ //表头
                     { field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left' }
                     , { field: 'name', title: '用户名', width: 80 ,align:'center'}
                     , { field: 'sex', title: '性别', width: 80,align:'center' }
                     , { field: 'ident', title: '身份证', width: 200 ,align:'center'}
-                    , { field: 'roomid', title: '房间号', width: 80 ,align:'center'}
+                    , { field: 'roomid', title: '房间号', width: 80 ,sort:true,align:'center'}
                     , { field: '', title: '操作', toolbar: '#barDemo' ,align:'center'}
                 ]]
             });
@@ -41,28 +33,29 @@
                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
                 var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
 
-                if (layEvent === 'detail') { //查看
-                    //do somehing
-                } else if (layEvent === 'del') { //删除
+               if (layEvent === 'del') { //删除
                     layer.confirm('真的删除行么', function (index) {
                         obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                         layer.close(index);
-                        //向服务端发送删除指令
+                        $.ajax({
+                            type: "GET",
+                            url: "deleteCusbyid",
+                            data: {
+                                id:data.id
+                            },
+                            dataType: "dataType",
+                            success: function (response) {
+                                
+                            }
+                        });
                     });
                 } else if (layEvent === 'edit') { //编辑
-                    //do something
-
-                    //同步更新缓存对应的值
-                    obj.update({
-                        username: '123'
-                        , title: 'xxx'
-                    });
+                   location.href="/Customer/edit?id="+data.id;
                 }
             });
         });
     </script>
     <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>

@@ -27,5 +27,6 @@ public class Order {
     private Integer recordid;
     @Column(name = "price")
     private Integer price;
-    
+    @Column(name ="time")
+    private String time;
 }

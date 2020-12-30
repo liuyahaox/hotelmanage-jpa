@@ -55,6 +55,10 @@
                     //同步更新缓存对应的值
                 } else if (layEvent === 'checkout') {
                     layer.confirm('确定退房么？', function (index) {
+                        if(data.etime){
+                            layer.msg("该房已退，请勿重复退房");
+                            return false;
+                        }
                         var util = layui.util;
                         var time = new Date();
                         obj.update({

@@ -1,5 +1,7 @@
 package com.example.jpa.Customer;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -193,8 +195,9 @@ public class CustomerController {
   }
   @RequestMapping(value = "/checkout")
   public int checkout(Integer recordid,Integer roomid) throws Exception {
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
    int price = customerService.checkout(recordid, roomid);
-   orderservice.orderdao.save(new Order(null, recordid, price));
+   orderservice.orderdao.save(new Order(null, recordid, price,df.format(new Date())));
   return price;
   
   }

@@ -64,12 +64,12 @@ public class CustomerController {
   
   @RequestMapping(value = "/lookcusinfo")
   public ModelAndView getcustomer() {
-    ModelAndView mv = new ModelAndView("formcustomer");
+    ModelAndView mv = new ModelAndView("customer/formcustomer");
     return mv;
   }
   @RequestMapping(value = "/lookroominfo")
   public ModelAndView getroom() {
-    ModelAndView mv = new ModelAndView("formroom");
+    ModelAndView mv = new ModelAndView("room/formroom");
     return mv;
   }
 
@@ -97,7 +97,7 @@ public class CustomerController {
 
   @RequestMapping(value = "/editcustomer")
   public ModelAndView editcustomer(Integer id) {
-    ModelAndView mv = new ModelAndView("formcuslook");
+    ModelAndView mv = new ModelAndView("customer/formcuslook");
     Customer customer = customerService.customerdao.findById(id).get();
     mv.addObject("customer", customer);
     return mv;
@@ -105,10 +105,22 @@ public class CustomerController {
 
   @RequestMapping(value = "/editroom")
   public ModelAndView editroom(Integer id) {
-    ModelAndView mv = new ModelAndView("formroomlook");
+    ModelAndView mv = new ModelAndView("room/formroomlook");
     Room room = roomservice.roomDao.findById(id).get();
     mv.addObject("room", room);
     return mv;
   }
+  
+  
+  @RequestMapping(value = "/addcustomer")
+  public ModelAndView addcustomer() {
+    ModelAndView mv = new ModelAndView("customer/formcuslook");
+    return mv;
+  }
 
+  @RequestMapping(value = "/addroom")
+  public ModelAndView addroom() {
+    ModelAndView mv = new ModelAndView("room/formroomlook");
+    return mv;
+  }
 }

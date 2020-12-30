@@ -53,6 +53,9 @@
                    location.href="/Customer/editcustomer?id="+data.id;
                 }
             });
+            $("#addbutton").click(function(){
+                location.href="/Customer/addcustomer";
+            })
         });
     </script>
     <script type="text/html" id="barDemo">
@@ -66,8 +69,8 @@
     <div class="layui-container">
         <div class="layui-row">
             <div class="layui-col-md1 " style="text-align: center;" >
-                <br>
-
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <button type="button" class="layui-btn layui-btn-warm" id="addbutton">添加</button>
             </div>
             <div class="layui-col-md11" style="text-align: center;">
                 <br>

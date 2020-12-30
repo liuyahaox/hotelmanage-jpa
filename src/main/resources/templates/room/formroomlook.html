@@ -13,33 +13,33 @@
         <div class="layui-form-item">
             <label class="layui-form-label">房间号</label>
              <div class="layui-input-block">
-              <input type="text" name="id" required  lay-verify="required" placeholder="房间号" autocomplete="off" class="layui-input" th:value="${room.id}">
+              <input type="text" name="id" required  lay-verify="required" placeholder="房间号" autocomplete="off" class="layui-input" th:value="${room?.id}">
             </div>
           </div>
           <div class="layui-form-item">
             <label class="layui-form-label">价格</label>
             <div class="layui-input-block">
-              <input type="text" name="price" required  lay-verify="required" placeholder="价格" autocomplete="off" class="layui-input" th:value="${room.price}">
+              <input type="text" name="price" required  lay-verify="required" placeholder="价格" autocomplete="off" class="layui-input" th:value="${room?.price}">
             </div>
           </div>
           <div class="layui-form-item">
             <label class="layui-form-label">类型</label>
             <div class="layui-input-block">
-              <input type="text" name="type" required  lay-verify="required" placeholder="类型" autocomplete="off" class="layui-input" th:value="${room.type}">
+              <input type="text" name="type" required  lay-verify="required" placeholder="类型" autocomplete="off" class="layui-input" th:value="${room?.type}">
             </div>
           </div>
           <div class="layui-form-item">
             <label class="layui-form-label">是否被预定</label>
             <div class="layui-input-block">
-              <input type="radio" name="isbooked" value="true" title="是" th:checked="${room.isbooked==true}">
-              <input type="radio" name="isbooked" value="false" title="否" th:checked="${room.isbooked==false}">
+              <input type="radio" name="isbooked" value="true" title="是" th:checked="${room?.isbooked==true}">
+              <input type="radio" name="isbooked" value="false" title="否" th:checked="${room?.isbooked==false}">
             </div>
           </div>
           <div class="layui-form-item">
             <label class="layui-form-label">是否为空</label>
             <div class="layui-input-block">
-              <input type="radio" name="isempty" value="true" title="是" th:checked="${room.isempty==true}">
-              <input type="radio" name="isempty" value="false" title="否" th:checked="${room.isempty==false}">
+              <input type="radio" name="isempty" value="true" title="是" th:checked="${room?.isempty==true}">
+              <input type="radio" name="isempty" value="false" title="否" th:checked="${room?.isempty==false}">
             </div>
           </div>
         <div class="layui-form-item">

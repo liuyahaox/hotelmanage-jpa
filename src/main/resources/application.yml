@@ -23,7 +23,3 @@ spring:
         useGlobalDataSourceStat: true
         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
   
-  jpa:
-    hibernate:
-     ddl-auto: update
-    show-sql: true

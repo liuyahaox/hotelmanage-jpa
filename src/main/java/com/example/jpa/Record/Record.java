@@ -23,12 +23,16 @@ public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "roomid")
     private Integer roomid;
-    @Column(name = "custormerid")
+
+    @Column(name = "customerid")
     private Integer customerid;
+
     @Column(name = "stime")
     private String stime;
+
     @Column(name = "etime")
     private String etime;
 

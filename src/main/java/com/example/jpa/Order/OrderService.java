@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {
-    @Autowired
-    public OrderDao orderdao;
+    @Autowired 
+    public Ordermapper ordermapper;
     
 }

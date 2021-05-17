@@ -38,6 +38,7 @@
             <dd><a href="javascript:;" id="2">查看所有客房信息</a></dd>
             <dd><a href="javascript:;" id="3">查看所有记录</a></dd>
             <dd><a href="javascript:;" id="4">查看所有账单</a></dd>
+            <dd><a href="javascript:;" id="5">存储过程测试</a></dd>
           </dl>
         </li>
       </ul>
@@ -69,6 +70,9 @@ layui.use('element', function(){
   })
   $("#4").click(function(){
     $("#show").attr("src","Customer/lookorderinfo")
+  })
+  $("#5").click(function(){
+    $("#show").attr("src","Customer/testprocedure")
   })
   
 });

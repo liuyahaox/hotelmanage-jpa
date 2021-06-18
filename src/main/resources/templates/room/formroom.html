@@ -17,7 +17,7 @@
                 , height: 500
                 , width: 1050
                 // , url: 'getallroomnobook' //数据接口
-                , url: 'getallroom'
+                , url: '/page/Customer/getallroom'
                 , page: true //开启分页
                 , cols: [[ //表头
                     { field: 'id', title: '房间号', width: 100, sort: true, fixed: 'left' }
@@ -39,7 +39,7 @@
                         layer.close(index);
                         $.ajax({
                             type: "GET",
-                            url: "deleteRoombyid",
+                            url: "/page/Customer/deleteRoombyid",
                             data: {
                                 id:data.id
                             },
@@ -83,19 +83,18 @@
     </script>
     <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="checkin">入住</a>   
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit" sec:authorize="hasAuthority('admin')">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" sec:authorize="hasAuthority('admin')">删除</a>
     </script>
 </head>
 
 <body>
-
+    <h1  sec:authorize="hasAuthority('common')" style="margin-left: 45%;" >欢迎你  <span sec:authentication="name"></span></h1>
     <div class="layui-container">
         <div class="layui-row">
             <div class="layui-col-md1 " style="text-align: center;" >
                 <br><br><br><br><br><br><br><br><br><br><br><br>
-                <button type="button" class="layui-btn layui-btn-warm" id="addbutton">添加</button>
-
+                <button type="button" class="layui-btn layui-btn-warm" id="addbutton" sec:authorize="hasAuthority('admin')">添加</button>
             </div>
             <div class="layui-col-md11" style="text-align: center;">
                 <br>

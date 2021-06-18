@@ -43,6 +43,7 @@ public class Securityconfig extends WebSecurityConfigurerAdapter{
       .antMatchers("/page/logout").permitAll()
       .antMatchers("/User/registration").permitAll()
       .antMatchers("/User/regist").permitAll()
+      .antMatchers("//page/Customer/getallroom").hasAnyAuthority("admin","common")
       .antMatchers("/page/**").hasAuthority("admin")
       .anyRequest().authenticated() //任何请求,登录后可以访问
       .and()

@@ -51,7 +51,7 @@
                     });
                 } else if (layEvent === 'edit') { //编辑
                     //do something
-                    location.href="/Customer/editroom?id="+data.id;
+                    location.href="/page/Customer/editroom?id="+data.id;
                 } else if (layEvent === 'checkin'){
                     layer.confirm('确认入住？', function (index) {
                         obj.update({
@@ -77,7 +77,7 @@
                 }
             });
             $("#addbutton").click(function(){
-                location.href="/Customer/addroom";
+                location.href="/page/Customer/addroom";
             })
         });
     </script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{layui/css/layui.css}" media="all">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.5.1.js}"></script>
+</head>
+<body style="background-color: cornsilk;">
+    <br>
+    <a th:href="@{/User/registration}" style="margin-left: 1.5CM; margin-left: 95%;" s>[[#{registration.regist}]]</a>
+    <br><br><br><br><br><br><br><br><br><br>
+    <h1 style="text-align: center;">[[#{login.login}]]</h1>
+    <br><br><br><br>
+    <form class="layui-form" th:action="@{User/tologin}"  style="margin-left: 35%;" method="POST">
+      <div class="layui-form-item">
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label" th:text="#{login.username}" ></label>
+        <div class="layui-input-block">
+          <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input" style="width: 30%;" >
+        </div>
+    </div>
+      </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label" th:text="#{login.password}"></label>
+            <div class="layui-input-block">
+              <input type="password" name="password" lay-verify="required"  autocomplete="off" class="layui-input" style="width: 30%;">
+            </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">[[#{login.signin}]]</button>
+            <button type="reset" class="layui-btn layui-btn-primary" style="margin-left: 12%;">[[#{login.reset}]]</button>
+          </div>
+        </div>
+    </form>
+    <br><br><br><br><br><br>
+    <a th:href="@{?(l='zh_CN')}" style="margin-left: 45%;">中文</a>
+    <a th:href="@{?(l='en_US')}" style="margin-left: 1.5CM;">English</a>
+</body>
+<script>
+  //Demo
+  layui.use('form', function(){
+    var form = layui.form;
+    
+    //监听提交
+    form.on('submit(formDemo)', function(data){
+      return true;
+    });
+  });
+  </script>
+</html>

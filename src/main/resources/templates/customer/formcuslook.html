@@ -9,7 +9,7 @@
     <script th:src="@{/jquery-3.5.1.js}"></script>
 </head>
 <body>
-    <form class="layui-form" action="/Customer/updatecustomer" id="form">
+    <form class="layui-form" th:action="@{/page/Customer/updatecustomer}" id="form">
       <input name ="id" th:value="${customer?.id}" hidden>
         <div class="layui-form-item">
           <label class="layui-form-label">姓名</label>

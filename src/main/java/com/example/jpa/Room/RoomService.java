@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoomService {
-   //  @Autowired
-   //  public RoomDao roomDao;
+  
     @Autowired
     public Roommapper roommapper;
 
@@ -24,17 +23,7 @@ public class RoomService {
         return true;
     }
     
-   //  public List<Room> findallroom(Pageable pageable) {
-   //      return roomDao.findAll(pageable);
-   //   }
-   //   public List<Room> findallroom() {
-   //    return roomDao.findAll();
-   // }
-
-   //   public List<Room> findallroomnobook(Pageable pageable) {
-   //      return roomDao.findByisbooked(false,pageable);
-   //   }
-
+ 
      public List<Room> findallroomnobook() {
         return roommapper.findbyisbooked(false);
      }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>民宿管理</title>
   <link rel="stylesheet" href="../layui/css/layui.css">
-
+  <script th:src="@{/jquery-3.5.1.js}"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -16,14 +16,13 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="https://s3.ax1x.com/2020/12/30/rLUfpQ.jpg" class="layui-nav-img">
-          刘亚豪
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
+          <dd><a th:href="">基本资料</a></dd>
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href="logout">退出登录</a></li>
     </ul>
   </div>
   
@@ -32,13 +31,12 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">功能</a>
+          <a class="" href="javascript:;" >功能</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" id="1">查看所有客户信息</a></dd>
+            <dd><a href="javascript:;" id="1" >查看所有客户信息</a></dd>
             <dd><a href="javascript:;" id="2">查看所有客房信息</a></dd>
             <dd><a href="javascript:;" id="3">查看所有记录</a></dd>
             <dd><a href="javascript:;" id="4">查看所有账单</a></dd>
-            <dd><a href="javascript:;" id="5">存储过程测试</a></dd>
           </dl>
         </li>
       </ul>
@@ -50,7 +48,7 @@
   </div>
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    © layui.com - 底部固定区域  
   </div>
 </div>
 <script src="../jquery-3.5.1.js"></script>
@@ -71,10 +69,6 @@ layui.use('element', function(){
   $("#4").click(function(){
     $("#show").attr("src","Customer/lookorderinfo")
   })
-  $("#5").click(function(){
-    $("#show").attr("src","Customer/testprocedure")
-  })
-  
 });
 
 </script>

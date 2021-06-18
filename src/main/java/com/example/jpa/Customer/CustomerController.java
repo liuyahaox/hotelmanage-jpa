@@ -16,6 +16,7 @@ import com.example.jpa.Room.RoomService;
 import com.github.pagehelper.PageHelper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @RestController
-@RequestMapping(value = "/Customer")
+@RequestMapping(value = "/page/Customer")
 public class CustomerController {
   @Autowired
   CustomerService customerService;
@@ -40,7 +41,6 @@ public class CustomerController {
   Customermapper customermapper;
   @Autowired
   Recordmapper recordmapper;
-
   @RequestMapping(value = "/getallcustomer")
   public Map<String, Object> findallcustomer(int page, int limit) {
     PageHelper.startPage(page, limit);

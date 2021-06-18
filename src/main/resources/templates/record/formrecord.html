@@ -51,7 +51,7 @@
                     });
                 } else if (layEvent === 'edit') { //编辑
                     //do something
-                    location.href = "/Customer/editrecord?id=" + data.id;
+                    location.href = "/page/Customer/editrecord?id=" + data.id;
                     //同步更新缓存对应的值
                 } else if (layEvent === 'checkout') {
                     layer.confirm('确定退房么？', function (index) {

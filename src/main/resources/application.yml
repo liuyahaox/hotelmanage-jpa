@@ -23,3 +23,9 @@ spring:
         useGlobalDataSourceStat: true
         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
   
+  messages:
+    basename: static/i18n/registration, static/i18n/login
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

@@ -9,7 +9,7 @@
     <script th:src="@{/jquery-3.5.1.js}"></script>
 </head>
 <body>
-    <form class="layui-form" action="/Customer/updateroom">
+    <form class="layui-form" th:action="@{/page/Customer/updateroom}">
         <div class="layui-form-item">
             <label class="layui-form-label">房间号</label>
              <div class="layui-input-block">

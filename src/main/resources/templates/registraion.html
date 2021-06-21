@@ -28,12 +28,19 @@
       <label class="layui-form-label" th:text="#{registration.password}"></label>
       <div class="layui-input-block">
         <input type="password" name="password" lay-verify="required" autocomplete="off" class="layui-input"
-          style="width: 30%;">
+          style="width: 30%;" id="1">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label" th:text="#{registration.repassword}"></label>
+      <div class="layui-input-block">
+        <input type="password" name="repassword" lay-verify="required" autocomplete="off" class="layui-input"
+          style="width: 30%;" id="2">
       </div>
     </div>
     <div class="layui-form-item">
       <div class="layui-input-block">
-        <input type="hidden" name="rank" value="user" lay-verify="required" autocomplete="off" class="layui-input">
+        <input type="hidden" name="role" value="common" lay-verify="required" autocomplete="off" class="layui-input">
       </div>
     </div>
     <div class="layui-form-item">
@@ -55,7 +62,11 @@
 
     //监听提交
     form.on('submit(formDemo)', function (data) {
-      return true;
+      if($("#1").val()!=$("#2").val()){
+         layer.msg('[[#{registration.confirm}]]');
+         return false;
+         }
+      else return true;
     });
   });
 </script>

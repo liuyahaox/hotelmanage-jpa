@@ -26,7 +26,7 @@ public class welcome {
 @RequestMapping(value="/page")
 public ModelAndView qufen(){
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    if(auth.getAuthorities().toString().equals("[admin]"))
+    if(auth.getAuthorities().toString().contains("[admin]"))
         return new ModelAndView ("redirect:/page/test.html");//如果是客户登录
     else
         return new ModelAndView("room/formroom");//如果是后台管理人员登录

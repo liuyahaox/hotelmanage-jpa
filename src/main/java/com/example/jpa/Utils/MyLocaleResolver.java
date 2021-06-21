@@ -5,9 +5,11 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.thymeleaf.util.StringUtils;
-
+@Configuration
 public class MyLocaleResolver implements LocaleResolver {
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
@@ -22,5 +24,11 @@ public class MyLocaleResolver implements LocaleResolver {
     @Override
     public void setLocale(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale) {
     }
+
+    @Bean
+   // 为了让区域信息解析器生效，将区域信息解析器注册在容器中
+        public LocaleResolver localeResolver(){
+            return new MyLocaleResolver();
+        }
 }
 

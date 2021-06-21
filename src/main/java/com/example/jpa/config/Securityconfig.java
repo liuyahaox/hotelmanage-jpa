@@ -58,7 +58,7 @@ public class Securityconfig extends WebSecurityConfigurerAdapter{
 
    @Override
    public void configure(WebSecurity web) throws Exception {
-      web.ignoring().antMatchers("/layui/**","/page/test.html","/jquery-3.5.1.js/**");
+      web.ignoring().antMatchers("/layui/**","/jquery-3.5.1.js/**");
    }
    @Bean
    public static PasswordEncoder passwordEncoder(){  

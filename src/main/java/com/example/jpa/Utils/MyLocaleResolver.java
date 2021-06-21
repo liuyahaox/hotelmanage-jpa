@@ -26,9 +26,8 @@ public class MyLocaleResolver implements LocaleResolver {
     }
 
     @Bean
-   // 为了让区域信息解析器生效，将区域信息解析器注册在容器中
-        public LocaleResolver localeResolver(){
-            return new MyLocaleResolver();
-        }
+    public LocaleResolver localeResolver(){
+        return new MyLocaleResolver();
+    }
 }
 

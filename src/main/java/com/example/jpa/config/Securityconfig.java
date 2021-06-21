@@ -27,10 +27,6 @@ public class Securityconfig extends WebSecurityConfigurerAdapter{
        System.out.println("被调用");
        auth.userDetailsService(myservice).passwordEncoder(encoder);
    }
-   @Bean
-   public PasswordEncoder encoder() {
-      return new BCryptPasswordEncoder();
-   }
 
    @Override
    protected void configure(HttpSecurity http) throws Exception {
